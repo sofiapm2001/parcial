@@ -1,0 +1,44 @@
+<!--
+  Generated template for the Mostrar2Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Mascotas</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+        <ion-slides pager>
+          <ion-slide *ngFor = "let img of imgs">
+            <img src= "https://img.segundamano.mx/medium/{{img.path}}">
+          </ion-slide>
+        </ion-slides>
+      </ion-card>
+
+      <h2 *ngIf= "perros.ad.hasOwnProperty('list_price')">
+        Precio: {{perros.ad.list_price.label}}
+      </h2>
+      <ion-item>
+          <ion-icon *ngIf="!fav.existe(perros)" name= "heart" item-end (click)="favoritos(perros)"></ion-icon>
+          <ion-icon *ngIf="fav.existe(perros)" name= "heart" color="danger" item-end (click) = "fav.remove(perros)"></ion-icon>
+      </ion-item>
+        <h2  *ngIf = "perros.ad.hasOwnProperty('subject')">
+            {{perros.ad.subject}}
+        </h2>
+
+        <ion-card>
+            <ion-card-header>
+              Descripción:
+            </ion-card-header>
+            <h2>
+              {{perros.ad.body}}
+            </h2>
+            
+          </ion-card>
+  
+
+</ion-content>

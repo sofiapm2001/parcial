@@ -1,0 +1,47 @@
+<!--
+  Generated template for the MostrarPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Producto</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+        <ion-slides pager>
+          <ion-slide *ngFor = "let img of imgs">
+            <img src= "https://img.segundamano.mx/medium/{{img.path}}">
+          </ion-slide>
+        </ion-slides>
+      </ion-card>
+
+
+    <ion-card-content>
+      <h2 *ngIf= "consola.ad.hasOwnProperty('list_price')">
+        Precio: {{consola.ad.list_price.label}}
+      </h2>
+      <ion-item>
+          <ion-icon *ngIf="!fav.existe(consola)" name= "heart" item-end (click)="favoritos(consola)"></ion-icon>
+          <ion-icon *ngIf="fav.existe(consola)" name= "heart" color="danger" item-end (click) = "fav.remove(consola)"></ion-icon>
+      </ion-item>
+        <h2  *ngIf = "consola.ad.hasOwnProperty('subject')">
+            {{consola.ad.subject}}
+        </h2>
+
+        <ion-card>
+            <ion-card-header>
+              Descripción:
+            </ion-card-header>
+            <ion-card-content>
+              {{consola.ad.body}}
+            </ion-card-content>
+          </ion-card>
+
+          
+
+    </ion-card-content>
+</ion-content>

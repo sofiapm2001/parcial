@@ -1,0 +1,29 @@
+<!--
+  Generated template for the FavoritosPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>favoritos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background-color:#81AE9D">
+    <ion-list>
+        <ion-item *ngFor="let consola of items">
+          <ion-thumbnail item-start>
+              <img *ngIf ="consola.ad.hasOwnProperty('thumbnail')"
+              src= "https://img.segundamano.mx/cover/{{consola.ad.thumbnail.path}}">
+          </ion-thumbnail>
+          <h2  *ngIf ="consola.ad.hasOwnProperty('subject')">
+              {{consola.ad.subject}}
+            </h2>
+          <p *ngIf ="consola.ad.hasOwnProperty('list_price')">
+              {{consola.ad.list_price.label}}</p>
+          <button ion-button clear item-end (click)= "vermostrar(consola)">Ver</button>
+        </ion-item>
+      </ion-list>
+
+</ion-content>

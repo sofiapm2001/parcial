@@ -1,14 +1,38 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Consolas y Videojuegos
     </ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="buscar()">
+          <ion-icon name= "search"></ion-icon>
+        </button>
+      </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding style="background-color: #B5D2CB">
+    <ion-grid>
+        <ion-row>
+           <ion-col col-6 *ngFor = "let consola of consolas">
+              <ion-card (click) = "vermostrar(consola)">
+                  <img *ngIf = "consola.ad.hasOwnProperty('thumbnail')"
+                  src = "https://img.segundamano.mx/cover/{{consola.ad.thumbnail.path}}">
+                  <img *ngIf = "!consola.ad.hasOwnProperty('thumbnail')" src="../assets/imgs/control.png">
+
+                <ion-card-header *ngIf = "consola.ad.hasOwnProperty('list_price')">
+                    {{consola.ad.list_price.label}}
+                </ion-card-header>
+  
+                <ion-card-content>
+                  <h2 *ngIf = "consola.ad.hasOwnProperty('subject')">
+                    {{consola.ad.subject}}
+                  </h2>
+                </ion-card-content>
+                 
+                </ion-card>
+              </ion-col>
+         </ion-row>
+      </ion-grid>
+ 
 </ion-content>

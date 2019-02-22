@@ -1,0 +1,35 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FavoritosProvider } from '../../providers/favoritos/favoritos';
+
+/**
+ * Generated class for the MostrarPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
+@Component({
+  selector: 'page-mostrar',
+  templateUrl: 'mostrar.html',
+})
+export class MostrarPage {
+  consola ={};
+  imgs = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public fav: FavoritosProvider) {
+    this.consola = this.navParams.get('consola');
+    if(this.consola.ad.hasOwnProperty('images')){
+      this.imgs = this.consola.ad.images;
+    }
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad MostrarPage');
+  }
+  favoritos(consola){
+    this.fav.addFavoritos(consola);
+  }
+
+}

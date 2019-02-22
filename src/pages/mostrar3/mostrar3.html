@@ -1,0 +1,48 @@
+<!--
+  Generated template for the Mostrar3Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Empleos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background-color:#81AE9D">
+    <ion-card>
+        <ion-slides pager>
+          <ion-slide *ngFor = "let img of imgs">
+            <img src= "https://img.segundamano.mx/medium/{{img.path}}">
+          </ion-slide>
+        </ion-slides>
+      </ion-card>
+
+
+    <ion-card-content>
+      <h2 *ngIf= "empleos.ad.hasOwnProperty('list_price')">
+        Salario: {{empleos.ad.list_price.label}}
+      </h2>
+      <ion-item>
+          <ion-icon *ngIf="!fav.existe(empleos)" name= "heart" item-end (click)="favoritos(empleos)"></ion-icon>
+          <ion-icon *ngIf="fav.existe(empleos)" name= "heart" color="danger" item-end (click) = "fav.remove(empleos)"></ion-icon>
+      </ion-item>
+        <h2  *ngIf = "empleos.ad.hasOwnProperty('subject')">
+            {{empleos.ad.subject}}
+        </h2>
+
+        <ion-card>
+            <ion-card-header>
+              Descripción:
+            </ion-card-header>
+            <ion-card-content>
+              {{empleos.ad.body}}
+            </ion-card-content>
+          </ion-card>
+
+          
+
+    </ion-card-content>
+
+</ion-content>
